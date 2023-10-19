@@ -23,7 +23,7 @@ class CriteriaDataPage extends StatelessWidget {
           child: Column(children: [
             Container(
               padding: const EdgeInsets.all(8.0),
-              height: height * 0.25,
+              height: height * 0.2,
               width: width,
               color: myColors.blue,
               child: Column(
@@ -45,6 +45,51 @@ class CriteriaDataPage extends StatelessWidget {
                   ),
                 ],
               ),
+            ),
+            SizedBox(
+              height: height * 0.05,
+            ),
+            Expanded(
+              child: ListView.separated(
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: EdgeInsets.fromLTRB(
+                          8.0, index == 0 ? 0 : 8.0, 8.0, 8.0),
+                      child: stockMarketScanData.criteriaList[index].type ==
+                              'variable'
+                          ? RichText(
+                              text: TextSpan(
+                                  children: stockMarketScanData
+                                      .criteriaList[index].text
+                                      .split(" ")
+                                      .map((word) {
+                              return TextSpan(
+                                  text: "$word ",
+                                  style: const TextStyle(fontSize: 20));
+                            }).toList()))
+                          : MyText(
+                              text:
+                                  stockMarketScanData.criteriaList[index].text,
+                              color: myColors.white,
+                              fontSize: 20,
+                              wantDecoration: false),
+                    );
+                  },
+                  separatorBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: stockMarketScanData.id == 2
+                          ? MyText(
+                              text: "and",
+                              color: myColors.white,
+                              fontSize: 14,
+                              wantDecoration: false,
+                            )
+                          : Container(),
+                    );
+                  },
+                  itemCount: stockMarketScanData.criteriaList.length),
             )
           ]),
         ),
