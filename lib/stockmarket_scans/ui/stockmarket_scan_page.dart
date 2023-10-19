@@ -1,10 +1,10 @@
 import 'package:fitpage_assignment/constants/colors.dart';
-import 'package:fitpage_assignment/cubits/stockmarket_scan_cubit/stockmarket_scan_cubit.dart';
-import 'package:fitpage_assignment/cubits/stockmarket_scan_cubit/stockmarket_scan_states.dart';
-import 'package:fitpage_assignment/pages/criteria_data_page.dart';
 import 'package:fitpage_assignment/widgets/mytext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../cubits/stockmarket_scan_cubit/stockmarket_scan_cubit.dart';
+import '../cubits/stockmarket_scan_cubit/stockmarket_scan_states.dart';
+import 'criteria_data_page.dart';
 
 class StockMarketScanPage extends StatelessWidget {
   StockMarketScanPage({super.key});

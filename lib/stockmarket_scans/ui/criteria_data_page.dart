@@ -2,7 +2,7 @@ import 'package:fitpage_assignment/constants/colors.dart';
 import 'package:fitpage_assignment/widgets/mytext.dart';
 import 'package:flutter/material.dart';
 
-import '../data/stockmarket_scan_data.dart';
+import '../data_models/stockmarket_scan_data.dart';
 
 class CriteriaDataPage extends StatelessWidget {
   const CriteriaDataPage(

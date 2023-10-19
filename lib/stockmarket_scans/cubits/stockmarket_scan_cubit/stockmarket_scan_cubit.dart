@@ -1,21 +1,17 @@
-import 'package:fitpage_assignment/cubits/stockmarket_scan_cubit/stockmarket_scan_states.dart';
-import 'package:fitpage_assignment/data/stockmarket_scan_data.dart';
+import 'package:fitpage_assignment/stockmarket_scans/repositories/stockmarket_scan_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:dio/dio.dart';
+import '../../data_models/stockmarket_scan_data.dart';
+import 'stockmarket_scan_states.dart';
 
 class StockMarketScanCubit extends Cubit<StockMarketScanStates> {
-  StockMarketScanCubit() : super(DataLoading());
+  StockMarketScanCubit(this._stockMarketScanRepo) : super(DataLoading());
+
+  final StockMarketScanRepo _stockMarketScanRepo;
 
   Future<void> loadScanDataFromApi() async {
-    var dio = Dio();
-    List<StockMarketScanData> stockMarketScansList = [];
-    String url = 'http://coding-assignment.bombayrunning.com/data.json';
-    var response = await dio.get(url);
-    var jsonData = response.data;
-    for (int i = 0; i < jsonData.length; i++) {
-      stockMarketScansList.add(StockMarketScanData.fromJson(jsonData[i]));
-      print(jsonData[i]);
-    }
+    emit(DataLoading());
+    List<StockMarketScanData> stockMarketScansList =
+        await _stockMarketScanRepo.getStockMarketScansData();
     emit(DataLoaded(stockMarketScansList: stockMarketScansList));
   }
 }
