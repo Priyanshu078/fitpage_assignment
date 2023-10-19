@@ -47,10 +47,31 @@ class SubCriteriaDataPage extends StatelessWidget {
                   }
                 },
                 separatorBuilder: (context, index) {
-                  return Divider(
-                    color: myColors.white,
-                    thickness: 1,
-                  );
+                  return LayoutBuilder(builder: (context, constraints) {
+                    int count =
+                        (constraints.maxWidth / (width * 0.005)).floor();
+                    return SizedBox(
+                      height: height * 0.01,
+                      width: width,
+                      child: ListView.builder(
+                          shrinkWrap: true,
+                          scrollDirection: Axis.horizontal,
+                          itemCount: count,
+                          itemBuilder: (context, index) {
+                            return Padding(
+                              padding: const EdgeInsets.only(right: 1.0),
+                              child: Container(
+                                height: width * 0.005,
+                                width: width * 0.005,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: myColors.white,
+                                ),
+                              ),
+                            );
+                          }),
+                    );
+                  });
                 },
                 itemCount: variableType.values!.length + 1)
             : Column(
