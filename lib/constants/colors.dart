@@ -7,4 +7,5 @@ class MyColors {
   Color red = Colors.red;
   Color blue = Colors.blue;
   Color white = Colors.white;
+  Color darkBlue = const Color(0xff0000d8);
 }

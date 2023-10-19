@@ -13,5 +13,5 @@ class DataLoaded extends StockMarketScanStates {
   DataLoaded({required this.stockMarketScansList});
 
   @override
-  List<Object?> get props => [stockMarketScansList];
+  List<Object?> get props => [];
 }
