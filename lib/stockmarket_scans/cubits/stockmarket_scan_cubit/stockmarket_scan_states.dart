@@ -15,3 +15,8 @@ class DataLoaded extends StockMarketScanStates {
   @override
   List<Object?> get props => [];
 }
+
+class ErrorState extends StockMarketScanStates {
+  @override
+  List<Object?> get props => [];
+}

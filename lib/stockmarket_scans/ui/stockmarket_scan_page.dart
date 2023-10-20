@@ -126,7 +126,36 @@ class StockMarketScanPage extends StatelessWidget {
                     ),
                   ),
                 )
-              : const Center(child: CircularProgressIndicator());
+              : state is ErrorState
+                  ? Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          MyText(
+                            text: "Please check your internet connection",
+                            color: myColors.white,
+                            fontSize: 20,
+                            wantDecoration: false,
+                          ),
+                          SizedBox(
+                            height: height * 0.02,
+                          ),
+                          ElevatedButton(
+                              onPressed: () {
+                                context
+                                    .read<StockMarketScanCubit>()
+                                    .loadScansData();
+                              },
+                              child: MyText(
+                                text: "Retry",
+                                color: myColors.white,
+                                fontSize: 16,
+                                wantDecoration: false,
+                              ))
+                        ],
+                      ),
+                    )
+                  : const Center(child: CircularProgressIndicator());
         }));
   }
 }

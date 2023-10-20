@@ -18,7 +18,7 @@ class MainApp extends StatelessWidget {
       child: BlocProvider(
         create: (context) =>
             StockMarketScanCubit(context.read<StockMarketScanRepo>())
-              ..loadScanDataFromApi(),
+              ..loadScansData(),
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
           home: StockMarketScanPage(),
